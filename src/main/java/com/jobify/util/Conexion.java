@@ -1,41 +1,45 @@
 package com.jobify.util;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import io.github.cdimascio.dotenv.Dotenv;
 
 public class Conexion {
+    private static Connection connection = null;
     private static final Dotenv dotenv = Dotenv.load();
 
-    private static final String URL = dotenv.get("DB_URL");
-    private static final String USER = dotenv.get("DB_USER");
-    private static final String PASSWORD = dotenv.get("DB_PASSWORD");
-    private static Connection conexion = null;
+    private static final String DB_HOST = dotenv.get("DB_HOST", "localhost");
+    private static final String DB_PORT = dotenv.get("DB_PORT", "3306");
+    private static final String DB_NAME = dotenv.get("DB_NAME", "jobify_db");
+    private static final String DB_USER = dotenv.get("DB_USER", "root");
+    private static final String DB_PASSWORD = dotenv.get("DB_PASSWORD", "");
 
-    public static Connection getConexion() {
-        try {
-            if (conexion == null || conexion.isClosed()) {
+    private static final String URL = String.format(
+        "jdbc:mysql://%s:%s/%s?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true",
+        DB_HOST, DB_PORT, DB_NAME
+    );
+
+    public static Connection getConnection() {
+        if (connection == null) {
+            try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                conexion = DriverManager.getConnection(URL, USER, PASSWORD);
-                System.out.println("Conexión exitosa a la base de datos");
+                connection = DriverManager.getConnection(URL, DB_USER, DB_PASSWORD);
+            } catch (ClassNotFoundException | SQLException e) {
+                throw new RuntimeException("Error al conectar con la base de datos", e);
             }
-        } catch (ClassNotFoundException e) {
-            System.err.println("Error al cargar el driver de MySQL: " + e.getMessage());
-        } catch (SQLException e) {
-            System.err.println("Error al conectar con la base de datos: " + e.getMessage());
         }
-        return conexion;
+        return connection;
     }
 
-    public static void cerrarConexion() {
-        try {
-            if (conexion != null && !conexion.isClosed()) {
-                conexion.close();
-                System.out.println("Conexión cerrada exitosamente");
+    public static void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+                connection = null;
+            } catch (SQLException e) {
+                throw new RuntimeException("Error al cerrar la conexión", e);
             }
-        } catch (SQLException e) {
-            System.err.println("Error al cerrar la conexión: " + e.getMessage());
         }
     }
 } 

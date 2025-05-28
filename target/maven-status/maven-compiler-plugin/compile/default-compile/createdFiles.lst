@@ -1,4 +1,9 @@
 com\jobify\Main.class
-com\jobify\util\Conexion.class
+com\jobify\servlet\UsuarioEditServlet.class
 com\jobify\model\Usuario.class
+com\jobify\util\PasswordUtil.class
+com\jobify\servlet\UsuarioCreateServlet.class
+com\jobify\util\Conexion.class
+com\jobify\servlet\UsuarioDeleteServlet.class
 com\jobify\dao\UsuarioDAO.class
+com\jobify\servlet\UsuarioListServlet.class

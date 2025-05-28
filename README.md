@@ -1,52 +1,73 @@
-# Módulo de Gestión de Usuarios - Proyecto Jobify
+# Módulo de Usuarios – Jobify (Java Servlets)
 
-Este módulo forma parte de las pruebas del sistema **Jobify**, una plataforma que conecta clientes con proveedores de servicios. La presente evidencia corresponde a la implementación del módulo de gestión de usuarios utilizando **Java**, **JDBC** y **MySQL**.
+Este módulo hace parte de las pruebas del sistema **Jobify**. El objetivo del módulo es gestionar el CRUD de usuarios (crear, listar, editar y eliminar) usando **Java, Servlets, JSP y MySQL** desplegado en **Apache Tomcat**.
 
 ## Tecnologías utilizadas
 
-- Lenguaje: Java 17+
-- Base de datos: MySQL
-- Conexión: JDBC
-- IDE: VSCode
-- Control de versiones: Git + GitHub
-- Gestor de dependencias: Maven
+- **Java 21**
+- **Servlets (Jakarta EE)**
+- **JSP (JavaServer Pages)**
+- **MySQL**
+- **Tomcat 9.0**
+- **Maven**
+- **HTML5, CSS3, Bootstrap**
+- **.env (manejo de credenciales seguras)**
 
-## Seguridad
+---
 
-- Las credenciales se almacenan en un archivo `.env` (excluido del repositorio).
-- Se utilizó la librería `dotenv` para proteger la conexión con la base de datos.
-- La contraseña de usuario se almacena en formato encriptado (`SHA-256`).
+## Configuración Inicial
 
-## Funcionalidades implementadas
+1. **Base de datos:**
 
-- Inserción de usuarios (CREATE)
-- Listado de usuarios (READ)
-- Actualización de datos (UPDATE)
-- Eliminación de usuarios (DELETE)
-- Búsqueda por ID
-- Manejo de excepciones y validaciones básicas
+Crea una base de datos en MySQL con el nombre:
 
-## Cómo ejecutar el proyecto
+```sql
+CREATE DATABASE jobify_db;
+```
 
-### 1. Crear la base de datos
+Luego importa el archivo database.sql incluido en el repositorio o crea las tablas manualmente.
 
-Ejecuta el archivo `database.sql` desde MySQL Workbench o terminal para crear la base `jobify_db` y la tabla `usuarios`.
+2. Archivo .env:
 
-### 2. Configura el archivo `.env`
+Crea un archivo .env en la raíz y en la carpeta resources, con las siguientes variables:
 
-Crea un archivo `.env` en la raíz con el siguiente contenido:
-DB_URL=jdbc:mysql://localhost:3306/jobify_db
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=jobify_db
 DB_USER=root
-DB_PASSWORD=tu_contraseña
+DB_PASSWORD=TU_CONTRASEÑA
 
-> Asegúrate de que `.env` esté excluido en el `.gitignore`
 
-### 3. Compilar y ejecutar
+---
 
-En terminal:
+## Instrucciones de uso
+
+1. Clona este repositorio:
 
 ```bash
-mvn clean compile
-mvn exec:java
-
+git clone "https://github.com/iGabe23/users-module-java.git"
 ```
+
+2. Compila el proyecto con Maven:
+
+```bash
+mvn clean package
+```
+
+3. Copia el archivo .war generado en target/ hacia el directorio webapps/ de tu instalación de Tomcat 9.
+
+4. Inicia Tomcat doble click en el startup.bat dentro del directorio bin de Tomcat.
+
+5. Accede en tu navegador:
+"http://localhost:8080/users-java-servlet/"
+
+---
+
+
+## Funcionalidades del módulo
+
+- Ver listado de usuarios
+- Crear nuevos usuarios
+- Editar usuarios existentes
+- Eliminar usuarios
+- Validación de rutas y parámetros

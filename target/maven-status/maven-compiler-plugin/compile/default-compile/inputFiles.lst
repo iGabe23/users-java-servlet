@@ -1,5 +1,9 @@
-C:\Users\User\Desktop\jobify-modulo-usuarios\src\main\java\com\jobify\dao\UsuarioDAO.java
-C:\Users\User\Desktop\jobify-modulo-usuarios\src\main\java\com\jobify\Main.java
-C:\Users\User\Desktop\jobify-modulo-usuarios\src\main\java\com\jobify\model\Usuario.java
-C:\Users\User\Desktop\jobify-modulo-usuarios\src\main\java\com\jobify\util\Conexion.java
-C:\Users\User\Desktop\jobify-modulo-usuarios\src\main\java\com\jobify\util\PasswordUtil.java
+C:\Users\User\Desktop\users-java-servlet\src\main\java\com\jobify\util\PasswordUtil.java
+C:\Users\User\Desktop\users-java-servlet\src\main\java\com\jobify\servlet\UsuarioDeleteServlet.java
+C:\Users\User\Desktop\users-java-servlet\src\main\java\com\jobify\servlet\UsuarioCreateServlet.java
+C:\Users\User\Desktop\users-java-servlet\src\main\java\com\jobify\util\Conexion.java
+C:\Users\User\Desktop\users-java-servlet\src\main\java\com\jobify\servlet\UsuarioEditServlet.java
+C:\Users\User\Desktop\users-java-servlet\src\main\java\com\jobify\Main.java
+C:\Users\User\Desktop\users-java-servlet\src\main\java\com\jobify\dao\UsuarioDAO.java
+C:\Users\User\Desktop\users-java-servlet\src\main\java\com\jobify\servlet\UsuarioListServlet.java
+C:\Users\User\Desktop\users-java-servlet\src\main\java\com\jobify\model\Usuario.java

@@ -1,5 +1,25 @@
+# Archivos compilados
+target/
+*.class
+
+# Archivos de IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración local
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Logs
+*.log
